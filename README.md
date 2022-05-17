@@ -1,5 +1,5 @@
 # mtrtrain
-Hong Kong MTR Train Live Schedule lists next train schedule of some MTR lines in a single page, so it can help users to predict their arrival time of a train according to the schedule.
+Hong Kong MTR Train Live Schedule lists next train schedule of some MTR lines in a single page, so it can help users to predict their arrival time of a train according to the schedule. Real Time Data will be only retrived from data.gov.hk on the user device.
 
 It provides Chinese and English pages.
 
