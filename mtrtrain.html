@@ -15,7 +15,7 @@ th,td { font-size: 32px; text-align: center; }
 </head>
 <body onfocus="load_data()">
 <h1 class='head_text'>MTR Train Live Schedule - <span id='pagetitle' style="display:none;">Airport Express Line|Tung Chung Line|Tseung Kwan O Line|Tuen Ma Line</span></h1>
-<p class='std_text'>Route: <a href="?line=AEL">Airport Express Line</a> | <a href="?line=TCL">Tung Chung Line</a> | <a href="?line=TKL">Tseung Kwan O Line</a> | <a href="?line=TML">Tuen Ma Line</a> | <a href="/mtrtrain">中文</a>.</p>
+<p class='std_text'>Route: <a href="?line=AEL">Airport Express Line</a> | <a href="?line=TCL">Tung Chung Line</a> | <a href="?line=TKL">Tseung Kwan O Line</a> | <a href="?line=TML">Tuen Ma Line</a> | <a href="?line=EAL">East Rail Line</a> | <a href="/mtrtrain">中文</a>.</p>
 <p class='std_text'>Current Time: <span id='curr_time_1' class='curr_time'>-</span><br />(Automatic refresh in every 15 seconds or click <button onclick="load_data();">Manual Refresh</button>.)</p>
 <p><h2>Down: <span class="downstart">-</span> to <span class="downend">-</span></h2></p>
 <table border='1' id='down' width='100%'>
@@ -25,7 +25,7 @@ th,td { font-size: 32px; text-align: center; }
 <table border='1' id='up' width='100%'>
 </table>
 <hr/>
-<p class='std_text'>Route: <a href="?line=AEL">Airport Express Line</a> | <a href="?line=TCL">Tung Chung Line</a> | <a href="?line=TKL">Tseung Kwan O Line</a> | <a href="?line=TML">Tuen Ma Line</a> | <a href="/mtrtrain">中文</a>.</p>
+<p class='std_text'>Route: <a href="?line=AEL">Airport Express Line</a> | <a href="?line=TCL">Tung Chung Line</a> | <a href="?line=TKL">Tseung Kwan O Line</a> | <a href="?line=TML">Tuen Ma Line</a> | <a href="?line=EAL">East Rail Line</a> | <a href="/mtrtrain">中文</a>.</p>
 <p class='std_text'>Developed by <a href="https://sammy.hk">Sammy Fung</a>. Data source is <a href='https://data.gov.hk/en-data/dataset/mtr-mtr_bus-mtr-bus-eta-data'>data.gov.hk</a>.
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
@@ -83,6 +83,17 @@ if ($line == undefined || $line == 'TML') {
   $stations = {
 	'AWE': 'AsiaWorld Expo', 'AIR': 'Airport', 'TSY': 'Tsing Yi',  
         'KOW': 'Kowloon', 'HOK': 'Hong Kong'
+  };
+} else if ($line == 'EAL') {
+  $line = 'EAL';
+  $linename = 'East Rail Line';
+  $stations = {
+    'LMC': 'Lok Ma Chau' , 'LOW': 'Lo Wu', 'SHS': 'Sheung Shui',
+    'FAN': 'Fanling', 'TWO': 'Tai Wo', 'TAP': 'Tai Po Market',
+    'UNI': 'University', 'RAC': 'Racecourse', 'FOT': 'Fo Tan',
+    'SHT': 'Sha Tin', 'TAW': 'Tai Wai', 'KOT': 'Kowloon Tong',
+    'MKK': 'Mong Kok East', 'HUH': 'Hung Hom', 'EXC': 'Exhibition Centre',
+    'ADM': 'Admiralty'
   };
 };
 document.title = $progname + ' - ' + $linename +' (' + $line + ')';

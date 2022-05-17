@@ -15,7 +15,7 @@ th,td { font-size: 32px; text-align: center; }
 </head>
 <body>
 <h1 id='pagetitle' class='head_text'>港鐵列車即時班次</h1>
-<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
 <p id='curr_time_1' class='curr_time std_text'>現在時間：</p>
 <p><h2 class='std_text'>下行列車</h2></p>
 <table border='1' id='down' width='100%'>
@@ -29,7 +29,7 @@ th,td { font-size: 32px; text-align: center; }
 <table border='1' id='up' width='100%'>
 </table>
 <hr/>
-<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
 <p class='std_text'>本程式由 <a href="https://sammy.hk">Sammy Fung</a> 開發，數據由 <a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>資料一線通</a> 提供。</p>
 </body>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -99,7 +99,18 @@ if ($line == undefined || $line == 'TML') {
   $stations = {
 	'AWE': '博覽館', 'AIR': '機場', 'TSY': '青衣',
         'KOW': '九龍', 'HOK': '香港'
-  };
+    };
+} else if ($line == 'EAL') {
+  $line = 'EAL';
+  $linename = '東鐵綫';
+  $stations = {
+'LMC': '落馬洲', 'LOW': '羅湖', 'SHS': '上水',
+		'FAN': '粉嶺', 'TWO': '太和', 'TAP': '大埔墟',
+		  'UNI': '大學', 'RAC': '馬場', 'FOT': '火炭', 
+		  'SHT': '沙田', 'TAW': '大圍', 'KOT': '九龍塘',
+		  'MKK': '旺角東', 'HUH': '紅磡', 'EXC': '會展',
+		  'ADM': '金鐘'
+	  };
 };
 document.title = $progname + ' - ' + $linename +' (' + $line + ')';
 $('#pagetitle').html(document.title);
