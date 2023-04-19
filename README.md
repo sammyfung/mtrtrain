@@ -5,13 +5,16 @@ It provides Chinese and English pages.
 
 ## Available MTR Lines
 
+It supports all MTR Lines defined in [Next Train API Spec version 1.4](https://data.gov.hk/en-data/dataset/mtr-data2-nexttrain-data) from DATA.GOV.HK.
+
 * Airport Express Line 
 * East Rail Line 
+* South Island Line
 * Tseung Kwan O Line 
+* Tseun Wan Line
 * Tuen Ma Line
 * Tung Chung Line 
 
-## Demo
+## Offical Website
 
-* 中文: [港鐵列車即時班次](https://sammy.hk/mtrtrain/)   
-* English: [MTR Train Live Schedule](https://sammy.hk/mtrtrain/mtrtrain.html)
+* [港鐵列車即時班次](https://sammy.hk/mtrtrain/) (中文 Chinese) / [MTR Train Live Schedule](https://sammy.hk/mtrtrain/mtrtrain.html) (English)

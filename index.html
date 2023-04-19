@@ -5,7 +5,7 @@ https://github.com/sammyfung/mtrtrain
 <html lang="en">
 <head>
 <title>港鐵列車即時班次</title>
-<meta name="description" content="港鐵, 時間表, 屯馬綫, 將軍澳綫, 東涌綫, 機場快綫, 東鐵綫, MTR, Tuen Ma Line, TKO Line, Tung Chung Line, Airport Express Line, East Rail Line"/>
+<meta name="description" content="港鐵, 時間表, 屯馬綫, 將軍澳綫, 東涌綫, 機場快綫, 東鐵綫, 南港島綫, 荃灣綫, MTR, Tuen Ma Line, TKO Line, Tung Chung Line, Airport Express Line, East Rail Line, South Island Line, Tsuen Wan Line."/>
 <meta charset="utf-8"/>
 <style>
 th,td { font-size: 32px; text-align: center; }
@@ -15,7 +15,7 @@ th,td { font-size: 32px; text-align: center; }
 </head>
 <body>
 <h1 id='pagetitle' class='head_text'>港鐵列車即時班次</h1>
-<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
 <p id='curr_time_1' class='curr_time std_text'>現在時間：</p>
 <p><h2 class='std_text'>下行列車</h2></p>
 <table border='1' id='down' width='100%'>
@@ -29,7 +29,7 @@ th,td { font-size: 32px; text-align: center; }
 <table border='1' id='up' width='100%'>
 </table>
 <hr/>
-<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
 <p class='std_text'>本程式<a href="https://github.com/sammyfung/mtrtrain">源碼</a>以 Apache 2.0 許可證公開，數據由 <a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>資料一線通</a> 提供。</p>
 </body>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -111,6 +111,24 @@ if ($line == undefined || $line == 'TML') {
 		  'MKK': '旺角東', 'HUH': '紅磡', 'EXC': '會展',
 		  'ADM': '金鐘'
 	  };
+} else if ($line == 'SIL') {
+  $line = 'SIL';
+  $linename = '南港島綫';
+  $stations = {
+		'SOH': '海怡半島', 'LET': '利東', 'WCH': '黃竹坑',
+		'OCP': '海洋公園', 'ADM': '金鐘'
+  };
+} else if ($line == 'TWL') {
+  $line = 'TWL';
+  $linename = '荃灣綫';
+  $stations = {
+		'TSW': '荃灣', 'TWH': '大窩口', 'KWH': '葵興',
+		'KWF': '葵芳', 'LAK': '茘景', 'MEF': '美孚',
+		'LCK': '茘枝角', 'CSW': '長沙灣', 'SSP': '深水埗',
+		'PRE': '太子', 'MOK': '旺角', 'YMT': '油麻地',
+		'JOR': '佐敦', 'TST': '尖沙咀', 'ADM': '金鐘',
+                'CEN': '中環'
+  }; 
 };
 document.title = $progname + ' - ' + $linename +' (' + $line + ')';
 $('#pagetitle').html(document.title);
