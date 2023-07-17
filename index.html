@@ -5,7 +5,7 @@ https://github.com/sammyfung/mtrtrain
 <html lang="en">
 <head>
 <title>港鐵列車即時班次</title>
-<meta name="description" content="港鐵, 時間表, 屯馬綫, 將軍澳綫, 東涌綫, 機場快綫, 東鐵綫, 南港島綫, 荃灣綫, MTR, Tuen Ma Line, TKO Line, Tung Chung Line, Airport Express Line, East Rail Line, South Island Line, Tsuen Wan Line."/>
+<meta name="description" content="港鐵, 時間表, 屯馬綫, 將軍澳綫, 東涌綫, 機場快綫, 東鐵綫, 南港島綫, 荃灣綫, MTR, Tuen Ma Line, TKO Line, Tung Chung Line, Airport Express Line, East Rail Line, South Island Line, Tsuen Wan Line, Island Line."/>
 <meta charset="utf-8"/>
 <style>
 th,td { font-size: 32px; text-align: center; }
@@ -15,7 +15,7 @@ th,td { font-size: 32px; text-align: center; }
 </head>
 <body>
 <h1 id='pagetitle' class='head_text'>港鐵列車即時班次</h1>
-<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
 <p id='curr_time_1' class='curr_time std_text'>現在時間：</p>
 <p><h2 class='std_text'>下行列車</h2></p>
 <table border='1' id='down' width='100%'>
@@ -129,6 +129,17 @@ if ($line == undefined || $line == 'TML') {
 		'JOR': '佐敦', 'TST': '尖沙咀', 'ADM': '金鐘',
                 'CEN': '中環'
   }; 
+} else if ($line == 'ISL') {
+  $line = 'ISL';
+  $linename = '港島線';
+  $stations = {
+                'CHW': '柴灣', 'HFC': '杏花邨', 'SKW': '筲箕灣',
+                'SWH': '西灣河', 'TAK': '太古', 'QUB': '鰂魚涌',
+                'NOP': '北角', 'FOH': '炮台山', 'TIH': '天后',
+                'CAB': '銅鑼灣', 'WAC': '灣仔', 'ADM': '金鐘',
+                'CEN': '中環', 'SHW': '上環', 'SYP': '西營盤',
+                'HKU': '香港大學', 'KET': '堅尼地城'
+  };
 };
 document.title = $progname + ' - ' + $linename +' (' + $line + ')';
 $('#pagetitle').html(document.title);
