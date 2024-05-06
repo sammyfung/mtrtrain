@@ -1,10 +1,10 @@
 <!--
 MTR Train Live Schedule 
-https://github.com/sammyfung/mtrtrain
+GitHub & Sponsor this project: https://github.com/sammyfung/mtrtrain
 -->
 <html lang="en">
 <head>
-<title>港鐵列車即時班次</title>
+<title>港鐵列車即時班次 - 森路歷程</title>
 <meta name="description" content="港鐵, 時間表, 屯馬綫, 將軍澳綫, 東涌綫, 機場快綫, 東鐵綫, 南港島綫, 荃灣綫, 觀塘綫, MTR, Tuen Ma Line, TKO Line, Tung Chung Line, Airport Express Line, East Rail Line, South Island Line, Tsuen Wan Line, Island Line, Kwun Tong Line."/>
 <meta charset="utf-8"/>
 <style>
@@ -14,8 +14,9 @@ th,td { font-size: 32px; text-align: center; }
 </style>
 </head>
 <body>
-<h1 id='pagetitle' class='head_text'>港鐵列車即時班次</h1>
-<p class='std_text'>📝 由森路歷程提供，歡迎閱覽我的網誌 👉 <a href="https://sammy.hk">森路歷程</a></p>
+<h1 id='pagetitle' class='head_text'>港鐵列車即時班次 - 森路歷程</h1>
+<p class='std_text'>👨‍💻 <a href="https://sammy.hk" target="_blank">森路歷
+程</a>設計本程式 👈 歡迎不時點擊來閱覽我的網誌以支持本網 🙏</p>
 <p class='std_text'>🚆 選擇綫路 👉 <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
 <p id='curr_time_1' class='curr_time std_text'>🕰 現在時間：</p>
 <p><h2 class='std_text'>下行列車</h2></p>
@@ -31,7 +32,8 @@ th,td { font-size: 32px; text-align: center; }
 </table>
 <hr/>
 <p class='std_text'>🚆 選擇綫路 👉 <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
-<p class='std_text'>📝 由森路歷程提供，歡迎閱覽我的網誌 👉 <a href="https://sammy.hk">森路歷程</a></p>
+<p class='std_text'>👨<200d>💻 <a href="https://sammy.hk" target="_blank">森路歷
+程</a>設計本程式 👈 歡迎不時點擊來閱覽我的網誌以支持本網 🙏</p>
 <p class='std_text'>本程式<a href="https://github.com/sammyfung/mtrtrain">源碼</a>以 Apache 2.0 許可證公開，數據由<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>資料一線通</a>提供。</p>
 </body>
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -154,7 +156,7 @@ if ($line == undefined || $line == 'TML') {
                 'HOM': '何文田', 'WHA': '黃埔'
   };
 };
-document.title = $progname + ' - ' + $linename +' (' + $line + ')';
+document.title = $progname + '：' + $linename +' (' + $line + ') - 森路歷程';
 $('#pagetitle').html(document.title);
 $url_prefix = 'https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php';
 let url = [];
