@@ -15,26 +15,24 @@ th,td { font-size: 32px; text-align: center; }
 </head>
 <body>
 <h1 id='pagetitle' class='head_text'>港鐵列車即時班次 - 森路歷程</h1>
-<p class='std_text'>👨‍💻 <a href="https://sammy.hk" target="_blank">森路歷
-程</a>設計本程式 👈 歡迎不時點擊來閱覽我的網誌以支持本網 🙏</p>
+<p class='std_text'>👍 請多多支持和閱覽 👉 <a href="https://sammy.hk" target="_blank">森路歷程網誌</a> 🙏</p>
 <p class='std_text'>🚆 選擇綫路 👉 <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
-<p id='curr_time_1' class='curr_time std_text'>🕰 現在時間：</p>
-<p><h2 class='std_text'>下行列車</h2></p>
+<p id='curr_time_1' class='curr_time std_text'>⌚️ 現在時間：</p>
+<p><h2 id='down_track' class='std_text'>⬇️ 下行列車</h2></p>
 <table border='1' id='down' width='100%'>
 <!--
 <tr><th>車站</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr>
 -->
 <tr><th>車站</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
 </table>
-<p id='curr_time_2' class='curr_time std_text'>🕰 現在時間：</p>
-<p><h2 class='std_text'>上行列車</h2></p>
+<p id='curr_time_2' class='curr_time std_text'>⌚️ 現在時間：</p>
+<p><h2 id='up_track' class='std_text'>⬆️ 上行列車</h2></p>
 <table border='1' id='up' width='100%'>
 </table>
 <hr/>
 <p class='std_text'>🚆 選擇綫路 👉 <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
-<p class='std_text'>👨<200d>💻 <a href="https://sammy.hk" target="_blank">森路歷
-程</a>設計本程式 👈 歡迎不時點擊來閱覽我的網誌以支持本網 🙏</p>
-<p class='std_text'>本程式<a href="https://github.com/sammyfung/mtrtrain">源碼</a>以 Apache 2.0 許可證公開，數據由<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>資料一線通</a>提供。</p>
+<p class='std_text'>👍 請多多支持和閱覽 👉 <a href="https://sammy.hk" target="_blank">森路歷程網誌</a> 🙏</p>
+<p class='std_text'>👨‍💻 程式的開放源碼已放在 <a href="https://github.com/sammyfung/mtrtrain" target="_blank">GitHub</a> 👍 港鐵實時列車服務開放數據則來自<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>資料一線通</a> 👍</p>
 </body>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4825433-1"></script>
@@ -70,6 +68,8 @@ var $line = getUrlParameter('line');
 if ($line == undefined || $line == 'TML') {
   $line = 'TML';
   $linename = '屯馬綫';
+  $up_terminus_name = '屯門';
+  $down_terminus_name = '烏溪沙';
   $stations = {
         'TUM': '屯門', 'SIH': '兆康', 'TIS': '天水圍',
         'LOP': '朗屏', 'YUL': '元朗', 'KSR': '錦上路',
@@ -84,6 +84,8 @@ if ($line == undefined || $line == 'TML') {
 } else if ($line == 'TKL') {
   $line = 'TKL'; 
   $linename = '將軍澳綫';
+  $up_terminus_name = '寶琳及康城';
+  $down_terminus_name = '北角';
   $stations = {
 	'POA': '寶琳', 'HAH': '坑口', 'LHP': '康城',
 	'TKO': '將軍澳', 'TIK': '調景嶺', 'YAT': '油塘',
@@ -92,6 +94,8 @@ if ($line == undefined || $line == 'TML') {
 } else if ($line == 'TCL') {
   $line = 'TCL';
   $linename = '東涌綫';
+  $up_terminus_name = '東涌';
+  $down_terminus_name = '香港';
   $stations = {
 	'TUC': '東涌', 'SUN': '欣澳', 'TSY': '青衣',
 	'LAK': '荔景', 'NAC': '南昌', 'OLY': '奧運',
@@ -100,6 +104,8 @@ if ($line == undefined || $line == 'TML') {
 } else if ($line == 'AEL') {
   $line = 'AEL';
   $linename = '機場快綫';
+  $up_terminus_name = '機場及博覽館';
+  $down_terminus_name = '香港';
   $stations = {
 	'AWE': '博覽館', 'AIR': '機場', 'TSY': '青衣',
         'KOW': '九龍', 'HOK': '香港'
@@ -107,6 +113,8 @@ if ($line == undefined || $line == 'TML') {
 } else if ($line == 'EAL') {
   $line = 'EAL';
   $linename = '東鐵綫';
+  $up_terminus_name = '羅湖及落馬洲';
+  $down_terminus_name = '金鐘';
   $stations = {
 'LMC': '落馬洲', 'LOW': '羅湖', 'SHS': '上水',
 		'FAN': '粉嶺', 'TWO': '太和', 'TAP': '大埔墟',
@@ -118,6 +126,8 @@ if ($line == undefined || $line == 'TML') {
 } else if ($line == 'SIL') {
   $line = 'SIL';
   $linename = '南港島綫';
+  $up_terminus_name = '海怡半島';
+  $down_terminus_name = '金鐘';
   $stations = {
 		'SOH': '海怡半島', 'LET': '利東', 'WCH': '黃竹坑',
 		'OCP': '海洋公園', 'ADM': '金鐘'
@@ -125,6 +135,8 @@ if ($line == undefined || $line == 'TML') {
 } else if ($line == 'TWL') {
   $line = 'TWL';
   $linename = '荃灣綫';
+  $up_terminus_name = '荃灣';
+  $down_terminus_name = '中環';
   $stations = {
 		'TSW': '荃灣', 'TWH': '大窩口', 'KWH': '葵興',
 		'KWF': '葵芳', 'LAK': '茘景', 'MEF': '美孚',
@@ -136,6 +148,8 @@ if ($line == undefined || $line == 'TML') {
 } else if ($line == 'ISL') {
   $line = 'ISL';
   $linename = '港島線';
+  $up_terminus_name = '柴灣';
+  $down_terminus_name = '堅尼地城';
   $stations = {
                 'CHW': '柴灣', 'HFC': '杏花邨', 'SKW': '筲箕灣',
                 'SWH': '西灣河', 'TAK': '太古', 'QUB': '鰂魚涌',
@@ -147,6 +161,8 @@ if ($line == undefined || $line == 'TML') {
 } else if ($line == 'KTL') {
   $line = 'KTL';
   $linename = '觀塘綫';
+  $up_terminus_name = '調景嶺';
+  $down_terminus_name = '黃埔';
   $stations = {
                 'TIK': '調景嶺', 'YAT': '油塘', 'LAT': '藍田',
                 'KWT': '觀塘', 'NTK': '牛頭角', 'KOB': '九龍灣',
@@ -158,6 +174,8 @@ if ($line == undefined || $line == 'TML') {
 };
 document.title = $progname + '：' + $linename +' (' + $line + ') - 森路歷程';
 $('#pagetitle').html(document.title);
+$('#down_track').html('⬇️ 下行列車 ➡️ 往' + $down_terminus_name + '方向');
+$('#up_track').html('⬆️ 上行列車 ➡️ 往' + $up_terminus_name + '方向');
 $url_prefix = 'https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php';
 let url = [];
 for ($station in Object.keys($stations)) {
@@ -175,7 +193,7 @@ for ($i in url) {
     var upitems = [];
     if (curr_time == undefined) {
       curr_time = data.curr_time;
-      $('.curr_time').html("🕰 現在時間：" + curr_time);
+      $('.curr_time').html("⌚️ 現在時間：" + curr_time);
     };
     $.each( data.data, function( key, val ) {
        stopcode = key.replace($line + '-', ''); 	    
