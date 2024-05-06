@@ -15,8 +15,9 @@ th,td { font-size: 32px; text-align: center; }
 </head>
 <body>
 <h1 id='pagetitle' class='head_text'>港鐵列車即時班次</h1>
-<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
-<p id='curr_time_1' class='curr_time std_text'>現在時間：</p>
+<p class='std_text'>📝 由森路歷程提供，歡迎閱覽我的網誌 👉 <a href="https://sammy.hk">森路歷程</a></p>
+<p class='std_text'>🚆 選擇綫路 👉 <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p id='curr_time_1' class='curr_time std_text'>🕰 現在時間：</p>
 <p><h2 class='std_text'>下行列車</h2></p>
 <table border='1' id='down' width='100%'>
 <!--
@@ -24,13 +25,14 @@ th,td { font-size: 32px; text-align: center; }
 -->
 <tr><th>車站</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
 </table>
-<p id='curr_time_2' class='curr_time std_text'>現在時間：</p>
+<p id='curr_time_2' class='curr_time std_text'>🕰 現在時間：</p>
 <p><h2 class='std_text'>上行列車</h2></p>
 <table border='1' id='up' width='100%'>
 </table>
 <hr/>
-<p class='std_text'>綫路： <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
-<p class='std_text'>本程式<a href="https://github.com/sammyfung/mtrtrain">源碼</a>以 Apache 2.0 許可證公開，數據由 <a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>資料一線通</a> 提供。</p>
+<p class='std_text'>🚆 選擇綫路 👉 <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p class='std_text'>📝 由森路歷程提供，歡迎閱覽我的網誌 👉 <a href="https://sammy.hk">森路歷程</a></p>
+<p class='std_text'>本程式<a href="https://github.com/sammyfung/mtrtrain">源碼</a>以 Apache 2.0 許可證公開，數據由<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>資料一線通</a>提供。</p>
 </body>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-4825433-1"></script>
@@ -171,7 +173,7 @@ for ($i in url) {
     var upitems = [];
     if (curr_time == undefined) {
       curr_time = data.curr_time;
-      $('.curr_time').html("現在時間：" + curr_time);
+      $('.curr_time').html("🕰 現在時間：" + curr_time);
     };
     $.each( data.data, function( key, val ) {
        stopcode = key.replace($line + '-', ''); 	    
