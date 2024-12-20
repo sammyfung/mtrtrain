@@ -1,0 +1,134 @@
+<!--
+MTR Train Live Schedule 
+GitHub & Sponsor this project: https://github.com/sammyfung/mtrtrain
+-->
+<html lang="en">
+<head>
+<title>輕鐵列車即時班次 - 森路歷程</title>
+<meta name="description" content="港鐵, 時間表, 輕鐵, 屯門, 元朗, 天水圍"/>
+<meta charset="utf-8"/>
+<style>
+th,td { font-size: 32px; text-align: center; }
+.std_text { font-size: 32px; }
+.head_text { font-size: 48px; }
+</style>
+</head>
+<body>
+<h1 id='pagetitle' class='head_text'>輕鐵列車即時班次 - <a href="https://sammy.hk/">森路歷程</a></h1>
+<p id='current_time' class='std_text'>⌚️ 現在時間： -</p>
+<p id='update_time' class='std_text'>⌚️ 更新時間： -</p>
+<table id="timetable" border='1' width='100%'>
+  <tr><th>列車</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+</table>
+<p class='std_text'>🚆 選擇車站</p>
+
+<h2 class='std_text'>屯門</h2>
+<p class='std_text'>
+<a href="?stop=1">屯門碼頭</a> | 
+<a href="?stop=100">兆康</a> | 
+<a href="?stop=300">杯渡</a> | 
+</p>
+
+<h2 class='std_text'>元朗</h2>
+<p class='std_text'>
+<a href="?stop=600">元朗</a> | 
+</p>
+
+<h2 class='std_text'>天水圍</h2>
+<p class='std_text'>
+<a href="?stop=430">天水圍</a> | 
+</p>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0247336506883797"
+     crossorigin="anonymous"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0247336506883797"
+     data-ad-slot="9504048053"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<hr/>
+<p class='std_text'>🚆 選擇港鐵綫路 👉 <a href="../?line=AEL">機場快綫</a> | <a href="../?line=TCL">東涌綫</a> | <a href="../?line=TKL">將軍澳綫</a> | <a href="../?line=TML">屯馬綫</a> | <a href="../?line=EAL">東鐵綫</a> | <a href="../?line=SIL">南港島綫</a> | <a href="../?line=TWL">荃灣綫</a> | <a href="../?line=ISL">港島線</a> | <a href="../?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p class='std_text'>👨‍💻 歡迎到 <a href="https://github.com/sammyfung/mtrtrain" target="_blank">GitHub</a> 回饋意見及 Sponsor 支持</p>
+<p class='std_text'>👍 數據由香港政府<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>開放數據平台 DATA.GOV.HK</a>提供</p>
+<p class='std_text'>🙏 請多多瀏覽<a href="https://sammy.hk" target="_blank">森路歷程</a> 🙏</p></body>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K0FKV4F132"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K0FKV4F132');
+</script>
+<!--
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+<script>
+  const lrt_stops = {
+    1: '屯門碼頭',
+    100: '兆康',
+    300: '杯渡',
+    430: '天水圍',
+    600: '元朗',
+  }
+  function updateTime() {
+      const now = new Date();
+      const optionsDate = { year: 'numeric', month: 'long', day: 'numeric' };
+      const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+      document.getElementById('current_time').innerText = '⌚️ 現在時間：' + now.toLocaleDateString('zh-HK', optionsDate) + now.toLocaleTimeString('zh-HK', optionsTime);
+  }
+
+  setInterval(updateTime, 1000);
+  updateTime(); // Initial call to display time immediately
+
+  var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+  };
+
+  const stop = getUrlParameter('stop');
+  //console.log(`stop = {stop}`);
+  const url = 'https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=' + stop;
+  const stop_title = `${lrt_stops[stop]} - 輕鐵列車即時班次`;
+  document.title = stop_title + ' - 森路歷程';
+  $('#pagetitle').html(stop_title + ' - <a href="https://sammy.hk/">森路歷程</a>');
+  $.getJSON(url, function( data ) {
+    /*const system_time = new Date(data.system_time.replace(' ', 'T'));
+    const optionsDate = { year: 'numeric', month: 'long', day: 'numeric' };
+    const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+    const formattedDate = date.toLocaleDateString('zh-HK', optionsDate);
+    const formattedTime = date.toLocaleTimeString('zh-HK', optionsTime);*/
+    $('#update_time').html(`⌚️ 更新時間：${data.system_time}`);
+    $.each( data.platform_list, function( key, val ) {
+      $("#timetable").append(`<tr id='platform${val.platform_id}'><th>月台${val.platform_id}</th</tr>`);
+      $.each( val.route_list, function( route_key, route_val ) {
+        var train_length = '';
+        if (route_val.train_length == 2) {
+          train_length = '🚋🚋';
+        } else {
+          train_length = '🚋';
+        };
+        $(`#platform${val.platform_id}`).append(`<td>${train_length} ${route_val.route_no} ${route_val.dest_ch} (${route_val.time_ch})</td>`);
+      });
+      console.log(val);
+
+    });
+  });
+</script>
+</html>
