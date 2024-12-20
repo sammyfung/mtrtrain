@@ -1,0 +1,252 @@
+<!--
+Train Live Schedule for MTR stop.
+GitHub & Sponsor this project: https://github.com/sammyfung/mtrtrain
+-->
+<html lang="en">
+<head>
+<title>港鐵列車即時班次 - 森路歷程</title>
+<meta name="description" content="港鐵, 時間表, 屯馬綫, 將軍澳綫, 東涌綫, 機場快綫, 東鐵綫, 南港島綫, 荃灣綫, 觀塘綫, MTR, Tuen Ma Line, TKO Line, Tung Chung Line, Airport Express Line, East Rail Line, South Island Line, Tsuen Wan Line, Island Line, Kwun Tong Line."/>
+<meta charset="utf-8"/>
+<style>
+th,td { font-size: 32px; text-align: center; }
+.std_text { font-size: 32px; }
+.head_text { font-size: 48px; }
+</style>
+</head>
+<body>
+<h1 id='pagetitle' class='head_text'>港鐵列車即時班次 - 森路歷程</h1>
+<p class='std_text'>🚆 選擇綫路 👉 <a href="../?line=AEL">機場快綫</a> | <a href="../?line=TCL">東涌綫</a> | <a href="../?line=TKL">將軍澳綫</a> | <a href="../?line=TML">屯馬綫</a> | <a href="../?line=EAL">東鐵綫</a> | <a href="../?line=SIL">南港島綫</a> | <a href="../?line=TWL">荃灣綫</a> | <a href="../?line=ISL">港島線</a> | <a href="../?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p class='curr_time std_text'>⌚️ 現在時間：</p>
+<div id="timetables"></div>
+<hr/>
+<p class='curr_time std_text'>⌚️ 現在時間：</p>
+<p class='std_text'>🚆 選擇綫路 👉 <a href="../?line=AEL">機場快綫</a> | <a href="../?line=TCL">東涌綫</a> | <a href="../?line=TKL">將軍澳綫</a> | <a href="../?line=TML">屯馬綫</a> | <a href="../?line=EAL">東鐵綫</a> | <a href="../?line=SIL">南港島綫</a> | <a href="../?line=TWL">荃灣綫</a> | <a href="../?line=ISL">港島線</a> | <a href="../?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
+<p class='std_text'>👨‍💻 歡迎到 <a href="https://github.com/sammyfung/mtrtrain" target="_blank">GitHub</a> 回饋意見及 Sponsor 支持</p>
+<p class='std_text'>👍 數據由香港政府<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>開放數據平台 DATA.GOV.HK</a>提供</p>
+<p class='std_text'>🙏 請多多瀏覽<a href="https://sammy.hk" target="_blank">森路歷程</a> 🙏</p>
+</body>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K0FKV4F132"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K0FKV4F132');
+</script>
+<!--
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+<script>
+const progname = '港鐵列車即時班次';
+const tml = {
+  'TUM': '屯門', 'SIH': '兆康', 'TIS': '天水圍',
+  'LOP': '朗屏', 'YUL': '元朗', 'KSR': '錦上路',
+  'TWW': '荃灣西', 'MEF': '美孚', 'NAC': '南昌',
+  'AUS': '柯士甸', 'ETS': '尖東', 'HUH': '紅磡',
+  'HOM': '何文田', 'TKW': '土瓜灣', 'SUW': '宋皇臺',
+  'KAT': '啟德', 'DIH': '鑽石山', 'HIK': '顯徑',
+  'TAW': '大圍', 'CKT': '車公廟', 'STW': '沙田圍',
+  'CIO': '第一城', 'SHM': '石門', 'TSH': '大水坑',
+  'HEO': '恆安', 'MOS': '馬鞍山', 'WKS': '烏溪沙'
+};
+const tkl = {
+	'POA': '寶琳', 'HAH': '坑口', 'LHP': '康城',
+	'TKO': '將軍澳', 'TIK': '調景嶺', 'YAT': '油塘',
+	'QUB': '鰂魚涌', 'NOP': '北角'
+};
+const tcl = {
+	'TUC': '東涌', 'SUN': '欣澳', 'TSY': '青衣',
+	'LAK': '荔景', 'NAC': '南昌', 'OLY': '奧運',
+	'KOW': '九龍','HOK': '香港'
+};
+const ael = {
+	'AWE': '博覽館', 'AIR': '機場', 'TSY': '青衣',
+  'KOW': '九龍', 'HOK': '香港'
+};
+const eal = {
+  'LMC': '落馬洲', 'LOW': '羅湖', 'SHS': '上水',
+  'FAN': '粉嶺', 'TWO': '太和', 'TAP': '大埔墟',
+  'UNI': '大學', 'RAC': '馬場', 'FOT': '火炭', 
+  'SHT': '沙田', 'TAW': '大圍', 'KOT': '九龍塘',
+  'MKK': '旺角東', 'HUH': '紅磡', 'EXC': '會展',
+  'ADM': '金鐘'
+};
+const sil = {
+  'SOH': '海怡半島', 'LET': '利東', 'WCH': '黃竹坑',
+  'OCP': '海洋公園', 'ADM': '金鐘'
+};
+const twl = {
+  'TSW': '荃灣', 'TWH': '大窩口', 'KWH': '葵興',
+  'KWF': '葵芳', 'LAK': '茘景', 'MEF': '美孚',
+  'LCK': '茘枝角', 'CSW': '長沙灣', 'SSP': '深水埗',
+  'PRE': '太子', 'MOK': '旺角', 'YMT': '油麻地',
+  'JOR': '佐敦', 'TST': '尖沙咀', 'ADM': '金鐘',
+  'CEN': '中環'
+}; 
+const isl = {
+  'CHW': '柴灣', 'HFC': '杏花邨', 'SKW': '筲箕灣',
+  'SWH': '西灣河', 'TAK': '太古', 'QUB': '鰂魚涌',
+  'NOP': '北角', 'FOH': '炮台山', 'TIH': '天后',
+  'CAB': '銅鑼灣', 'WAC': '灣仔', 'ADM': '金鐘',
+  'CEN': '中環', 'SHW': '上環', 'SYP': '西營盤',
+  'HKU': '香港大學', 'KET': '堅尼地城'
+};
+const ktl = {
+  'TIK': '調景嶺', 'YAT': '油塘', 'LAT': '藍田',
+  'KWT': '觀塘', 'NTK': '牛頭角', 'KOB': '九龍灣',
+  'CHH': '彩虹', 'DIH': '鑽石山', 'WTS': '黃大仙',
+  'LOF': '樂富', 'KOT': '九龍塘', 'SKM': '石硤尾',
+  'PRE': '太子', 'MOK': '旺角', 'YMT': '油麻地',
+  'HOM': '何文田', 'WHA': '黃埔'
+};
+const mtrlines = [tml, tkl, tcl, ael, eal, sil, twl, isl, ktl];
+const mtrline_codes = 
+  ['TML', 'TKL', 'TCL', 'AEL', 'EAL', 'SIL', 'TWL', 'ISL', 'KTL'];
+const mtrline_names = 
+  ['屯馬綫', '將軍澳綫', '東涌綫', '機場快綫', '東鐵綫', '南港島綫', '荃灣綫', '港島線', '觀塘綫'];
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+};
+
+const stop = getUrlParameter('stop');
+var line_count = 0;
+var curr_time = undefined;
+var stop_name = undefined;
+
+for (const mtrline of mtrlines) {
+
+  console.log(mtrline);
+  console.log(mtrline_names[line_count]);
+    if (mtrline.hasOwnProperty(stop)) {
+      document.title = mtrline[stop] + ' - ' + progname + ' | 森路歷程';
+      $('#pagetitle').html(document.title);
+
+      const line_code = mtrline_codes[line_count].toLowerCase();
+      const timetable = `<div>
+          <p><h2 class='std_text'><a href='../?line=` + mtrline_codes[line_count]+ "'>"+mtrline_names[line_count]+'</a></h2></p>' +
+          `<table border='1' id='${line_code}table' width='100%'>
+          <tr><th>Direction</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>` +
+          `<tr id='${line_code}down'><td>⬇️ <div id='${line_code}downplat'>下行列車</div></td></tr>
+          <tr id='${line_code}up'><td>⬆️ <div id='${line_code}upplat'>上行列車</div></td></tr>`
+          "</table></div>";
+      $('#timetables').append(timetable);
+      
+      var url = 'https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php?line=' + mtrline_codes[line_count] + '&sta=' + stop;
+      $.getJSON(url, function( data ) {
+        var downitems = [];
+        var upitems = [];
+        if (curr_time == undefined) {
+          curr_time = data.curr_time;
+          $('.curr_time').html("⌚️ 現在時間：" + curr_time);
+        };
+        if (stop_name == undefined) {
+          stop_name = mtrline[stop];
+          $('.curr_time').html("⌚️ 現在時間：" + curr_time);
+        };
+        $.each( data.data, function( key, val ) {
+          $.each( val.DOWN, function( key, val ) {
+            if (parseInt(key) < 4) {
+              time = val.time;
+              $(`#${line_code}downplat`).html(`月台${val.plat}`);
+              time = time.replace(/^[0-9-]* /, '');	       
+              time = time.replace(/:[0-9]*$/, '');      
+              $(`#${line_code}down`).append( "<td id='" + key + "'>" + time + " (" + mtrline[val.dest] + ") " + "</td>" );
+            };
+          });
+          $.each( val.UP, function( key, val ) {
+            if (parseInt(key) < 4) {
+              time = val.time;
+              $(`#${line_code}upplat`).html(`月台${val.plat}`);
+              time = time.replace(/^[0-9-]* /, '');
+              time = time.replace(/:[0-9]*$/, '');		 
+              upitems.push( "<td id='" + key + "'>" + time + " (" + val.dest + ") " + "</td>" );
+              $(`#${line_code}up`).append( "<td id='" + key + "'>" + time + " (" + mtrline[val.dest] + ") " + "</td>" );
+
+            }
+          });   
+        });
+      });  
+    }
+    line_count += 1;
+}
+/*** Pls EDIT above, the following are old**/ 
+/*
+$('#down_track').html('⬇️ 下行列車 ➡️ 往' + $down_terminus_name + '方向');
+$('#up_track').html('⬆️ 上行列車 ➡️ 往' + $up_terminus_name + '方向');
+$url_prefix = 'https://rt.data.gov.hk/v1/transport/mtr/getSchedule.php';
+let url = [];
+for ($station in Object.keys($stations)) {
+  url.push($url_prefix + '?line=' + $line + '&sta=' + Object.keys($stations)[$station]);
+}
+$.ajaxSetup({
+async: false
+});
+curr_time = undefined;
+for ($i in url) {
+  //console.log(url[$i]);
+  $.getJSON(url[$i], function( data ) {
+    //console.log(data);
+    var downitems = [];
+    var upitems = [];
+    if (curr_time == undefined) {
+      curr_time = data.curr_time;
+      $('.curr_time').html("⌚️ 現在時間：" + curr_time);
+    };
+    $.each( data.data, function( key, val ) {
+       stopcode = key.replace($line + '-', ''); 	    
+       downitems.push('<th>' + $stations[stopcode] + ' (' + stopcode + ')</th>');
+       $.each( val.DOWN, function( key, val ) {
+         if (parseInt(key) < 4) {
+           time = val.time;
+           time = time.replace(/^[0-9-]* /, '');	       
+    	   time = time.replace(/:[0-9]*$/, '');      
+	   downitems.push( "<td id='" + key + "'>" + time + " (" + val.dest + ") " + "</td>" );
+         };
+       });
+       upitems.push('<th>' + $stations[stopcode] + ' (' + stopcode + ')</th>');
+       $.each( val.UP, function( key, val ) {
+         if (parseInt(key) < 4) {
+           time = val.time;
+           time = time.replace(/^[0-9-]* /, '');
+           time = time.replace(/:[0-9]*$/, '');		 
+           upitems.push( "<td id='" + key + "'>" + time + " (" + val.dest + ") " + "</td>" );
+         }
+       });   
+    });
+    $( "<tr/>", {
+      "class": "station-row", 
+      html: downitems.join( "" )
+    }).appendTo( $("#down") );
+    $( "<tr/>", {
+      "class": "station-row",
+      html: upitems.join( "" )
+    }).prependTo( $("#up") );
+  })
+  .fail(function() {
+    console.log( "error" );
+  });
+}
+    $( "<tr/>", {
+      "class": "station-row",
+      //html: "<th>車站</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th>"
+      html: "<th>車站</th><th>1</th><th>2</th><th>3</th><th>4</th>"
+    }).prependTo( $("#up") );
+//console.log('END');
+*/
+</script>
+</html>

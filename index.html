@@ -15,7 +15,6 @@ th,td { font-size: 32px; text-align: center; }
 </head>
 <body>
 <h1 id='pagetitle' class='head_text'>港鐵列車即時班次 - 森路歷程</h1>
-<p class='std_text'>👍 請多多支持和閱覽 👉 <a href="https://sammy.hk" target="_blank">森路歷程網誌</a> 🙏</p>
 <p class='std_text'>🚆 選擇綫路 👉 <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
 <p id='curr_time_1' class='curr_time std_text'>⌚️ 現在時間：</p>
 <p><h2 id='down_track' class='std_text'>⬇️ 下行列車</h2></p>
@@ -31,9 +30,9 @@ th,td { font-size: 32px; text-align: center; }
 </table>
 <hr/>
 <p class='std_text'>🚆 選擇綫路 👉 <a href="?line=AEL">機場快綫</a> | <a href="?line=TCL">東涌綫</a> | <a href="?line=TKL">將軍澳綫</a> | <a href="?line=TML">屯馬綫</a> | <a href="?line=EAL">東鐵綫</a> | <a href="?line=SIL">南港島綫</a> | <a href="?line=TWL">荃灣綫</a> | <a href="?line=ISL">港島線</a> | <a href="?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
-<p class='std_text'>👍 請多多支持和閱覽 👉 <a href="https://sammy.hk" target="_blank">森路歷程網誌</a> 🙏</p>
-<p class='std_text'>👨‍💻 程式的開放源碼已放在 <a href="https://github.com/sammyfung/mtrtrain" target="_blank">GitHub</a> 👍 港鐵實時列車服務開放數據則來自<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>資料一線通</a> 👍</p>
-</body>
+<p class='std_text'>👨‍💻 歡迎到 <a href="https://github.com/sammyfung/mtrtrain" target="_blank">GitHub</a> 回饋意見及 Sponsor 支持</p>
+<p class='std_text'>👍 數據由香港政府<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>開放數據平台 DATA.GOV.HK</a>提供</p>
+<p class='std_text'>🙏 請多多瀏覽<a href="https://sammy.hk" target="_blank">森路歷程</a> 🙏</p></body>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0FKV4F132"></script>
 <script>
@@ -172,7 +171,7 @@ if ($line == undefined || $line == 'TML') {
                 'HOM': '何文田', 'WHA': '黃埔'
   };
 };
-document.title = $progname + '：' + $linename +' (' + $line + ') - 森路歷程';
+document.title = $linename +' (' + $line + ') '+ $progname + ' | 森路歷程';
 $('#pagetitle').html(document.title);
 $('#down_track').html('⬇️ 下行列車 ➡️ 往' + $down_terminus_name + '方向');
 $('#up_track').html('⬆️ 上行列車 ➡️ 往' + $up_terminus_name + '方向');
@@ -197,22 +196,22 @@ for ($i in url) {
     };
     $.each( data.data, function( key, val ) {
        stopcode = key.replace($line + '-', ''); 	    
-       downitems.push('<th>' + $stations[stopcode] + ' (' + stopcode + ')</th>');
+       downitems.push(`<th><a href='stop/index.html?stop=${stopcode}'>` + $stations[stopcode] + ' (' + stopcode + ')</a></th>');
        $.each( val.DOWN, function( key, val ) {
          if (parseInt(key) < 4) {
            time = val.time;
            time = time.replace(/^[0-9-]* /, '');	       
-    	   time = time.replace(/:[0-9]*$/, '');      
-	   downitems.push( "<td id='" + key + "'>" + time + " (" + val.dest + ") " + "</td>" );
+    	     time = time.replace(/:[0-9]*$/, '');      
+	         downitems.push( "<td id='" + key + "'>" + time + " (" + $stations[val.dest] + ") " + "</td>" );
          };
        });
-       upitems.push('<th>' + $stations[stopcode] + ' (' + stopcode + ')</th>');
+       upitems.push(`<th><a href='stop/index.html?stop=${stopcode}'>` + $stations[stopcode] + ' (' + stopcode + ')</a></th>');
        $.each( val.UP, function( key, val ) {
          if (parseInt(key) < 4) {
            time = val.time;
            time = time.replace(/^[0-9-]* /, '');
            time = time.replace(/:[0-9]*$/, '');		 
-           upitems.push( "<td id='" + key + "'>" + time + " (" + val.dest + ") " + "</td>" );
+           upitems.push( "<td id='" + key + "'>" + time + " (" + $stations[val.dest] + ") " + "</td>" );
          }
        });   
     });
