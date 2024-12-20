@@ -144,8 +144,9 @@ for (const mtrline of mtrlines) {
   console.log(mtrline);
   console.log(mtrline_names[line_count]);
     if (mtrline.hasOwnProperty(stop)) {
-      document.title = mtrline[stop] + ' - ' + progname + ' | 森路歷程';
-      $('#pagetitle').html(document.title);
+      const page_title = mtrline[stop] + ' - ' + progname;
+      document.title = page_title + ' | 森路歷程';
+      $('#pagetitle').html(page_title + ' | <a href="https://sammy.hk/">森路歷程</a>');
 
       const line_code = mtrline_codes[line_count].toLowerCase();
       const timetable = `<div>
