@@ -193,6 +193,40 @@ for (const mtrline of mtrlines) {
           });   
         });
       });  
+      // LRT
+      const lrt_conn = {
+        'TUM': 295,
+        'SIH': 100,
+        'TIS': 430,
+        'YUL': 600,
+      }
+      if (stop in lrt_conn) {
+        const url = 'https://rt.data.gov.hk/v1/transport/mtr/lrt/getSchedule?station_id=' + lrt_conn[stop];
+        const timetable = `<div>
+          <p><h2 class='std_text'>輕鐵</h2></p>` +
+          `<table border='1' id='${line_code}table' width='100%'>
+          <tr><th>次序</th><th>1</th><th>2</th><th>3</th><th>4</th></tr>` +
+          "</table></div>";
+        $('#timetables').append(timetable);
+        $.getJSON(url, function( data ) {
+          $.each( data.platform_list, function( key, val ) {
+            console.log(val);
+            $("#timetable").append(`<tr id='platform${val.platform_id}'><th>月台${val.platform_id}</th</tr>`);
+            $.each( val.route_list, function( route_key, route_val ) {
+              var train_length = '';
+              if (route_val.train_length == 2) {
+                train_length = '🚋🚋';
+              } else {
+                train_length = '🚋';
+              };
+                $(`#platform${val.platform_id}`).append(`<td>${train_length} ${route_val.route_no} ${route_val.dest_ch} (${route_val.time_ch})</td>`);
+              });
+              console.log(val);
+          });
+        });
+
+      }
+
     }
     line_count += 1;
 }
