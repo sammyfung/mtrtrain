@@ -4,7 +4,7 @@ GitHub & Sponsor this project: https://github.com/sammyfung/mtrtrain
 -->
 <html lang="en">
 <head>
-<title>港鐵列車即時班次 - 森路歷程</title>
+<title>港鐵列車即時班次 - sammy.hk</title>
 <meta name="description" content="港鐵, 時間表, 屯馬綫, 將軍澳綫, 東涌綫, 機場快綫, 東鐵綫, 南港島綫, 荃灣綫, 觀塘綫, MTR, Tuen Ma Line, TKO Line, Tung Chung Line, Airport Express Line, East Rail Line, South Island Line, Tsuen Wan Line, Island Line, Kwun Tong Line."/>
 <meta charset="utf-8"/>
 <style>
@@ -14,7 +14,7 @@ th,td { font-size: 32px; text-align: center; }
 </style>
 </head>
 <body>
-<h1 id='pagetitle' class='head_text'>港鐵列車即時班次 - 森路歷程</h1>
+<h1 id='pagetitle' class='head_text'>港鐵列車即時班次 - sammy.hk</h1>
 <p class='std_text'>🚆 選擇綫路 👉 <a href="../?line=AEL">機場快綫</a> | <a href="../?line=TCL">東涌綫</a> | <a href="../?line=TKL">將軍澳綫</a> | <a href="../?line=TML">屯馬綫</a> | <a href="../?line=EAL">東鐵綫</a> | <a href="../?line=SIL">南港島綫</a> | <a href="../?line=TWL">荃灣綫</a> | <a href="../?line=ISL">港島線</a> | <a href="../?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
 <p class='curr_time std_text'>⌚️ 現在時間：</p>
 <div id="timetables"></div>
@@ -32,9 +32,7 @@ th,td { font-size: 32px; text-align: center; }
 <hr/>
 <p class='curr_time std_text'>⌚️ 現在時間：</p>
 <p class='std_text'>🚆 選擇綫路 👉 <a href="../?line=AEL">機場快綫</a> | <a href="../?line=TCL">東涌綫</a> | <a href="../?line=TKL">將軍澳綫</a> | <a href="../?line=TML">屯馬綫</a> | <a href="../?line=EAL">東鐵綫</a> | <a href="../?line=SIL">南港島綫</a> | <a href="../?line=TWL">荃灣綫</a> | <a href="../?line=ISL">港島線</a> | <a href="../?line=KTL">觀塘綫</a> | <a href="/mtrtrain/mtrtrain.html">English</a> .</p>
-<p class='std_text'>👨‍💻 歡迎到 <a href="https://github.com/sammyfung/mtrtrain" target="_blank">GitHub</a> 回饋意見及 Sponsor 支持</p>
-<p class='std_text'>👍 數據由香港政府<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>開放數據平台 DATA.GOV.HK</a>提供</p>
-<p class='std_text'>🙏 請多多瀏覽<a href="https://sammy.hk" target="_blank">森路歷程</a> 🙏</p>
+<p class='std_text'>👨<200d>💻 開放源碼 mtrtrain 由 <a href="https://github.com/sammyfung/mtrtrain" target="_blank">@sammyfung</a> 開發，數據來自<a href='https://data.gov.hk/tc-data/dataset/mtr-data2-nexttrain-data'>開放數據平台 DATA.GOV.HK</a> 👍</p>
 </body>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K0FKV4F132"></script>
@@ -145,8 +143,8 @@ for (const mtrline of mtrlines) {
   console.log(mtrline_names[line_count]);
     if (mtrline.hasOwnProperty(stop)) {
       const page_title = mtrline[stop] + ' - ' + progname;
-      document.title = page_title + ' | 森路歷程';
-      $('#pagetitle').html(page_title + ' | <a href="https://sammy.hk/">森路歷程</a>');
+      document.title = page_title + ' | sammy.hk';
+      $('#pagetitle').html(page_title + ' | <a href="https://sammy.hk/">sammy.hk</a>');
 
       const line_code = mtrline_codes[line_count].toLowerCase();
       const timetable = `<div>
